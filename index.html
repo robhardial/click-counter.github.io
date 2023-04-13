@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Click Counter</title>
+    <style>
+      #click-count {
+        font-size: 46px;
+        margin: 30px;
+        font-weight: bold;
+        font-style: oblique;
+      }
+      h1 {
+        font-size: 44px;
+        color: white;
+        margin-top: -50px;
+      }
+      button {
+        font-size: 24px;
+        padding: 10px 20px;
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-image: url('sky.jpeg');
+}
+      button:hover {
+        background-color: grey;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="font-size: 44px;color: white;">Chasing The Click</h1>
+    <button id="click-button">Press Here!</button>
+    <p id="click-count" style="color: white">0</p>
+    <script>
+      let clickCount = localStorage.getItem("clickCount");
+      if (!clickCount) {
+        clickCount = 0;
+      }
+      document.getElementById("click-count").textContent = clickCount;
+
+
+      document.getElementById("click-button").addEventListener("click", () => {
+        clickCount++;
+        document.getElementById("click-count").textContent = clickCount;
+        localStorage.setItem("clickCount", clickCount);
+      });
+    </script>
+  </body>
+</html>
